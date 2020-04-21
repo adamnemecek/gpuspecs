@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, mem::MaybeUninit};
+use std::{mem::MaybeUninit};
 
 // use hashbrown::HashMap;
 use hibitset::BitSetLike;
@@ -10,6 +10,7 @@ use crate::{
 use super::SliceAccess;
 
 use metalgear::GPUVec;
+/// Like `DenseVecStorage` but on the GPU
 pub struct GPUDenseVecStorage<T: Copy> {
     data: GPUVec<T>,
     entity_id: Vec<Index>,
