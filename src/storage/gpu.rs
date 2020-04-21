@@ -10,13 +10,13 @@ use crate::{
 use super::SliceAccess;
 
 use metalgear::GPUVec;
-pub struct GPUVecStorage<T: Copy> {
+pub struct GPUDenseVecStorage<T: Copy> {
     data: GPUVec<T>,
     entity_id: Vec<Index>,
     data_id: Vec<MaybeUninit<Index>>,
 }
 
-impl<T: Copy> Default for GPUVecStorage<T> {
+impl<T: Copy> Default for GPUDenseVecStorage<T> {
     fn default() -> Self {
         Self {
             data: Default::default(),
@@ -26,7 +26,7 @@ impl<T: Copy> Default for GPUVecStorage<T> {
     }
 }
 
-impl<T: Copy> SliceAccess<T> for GPUVecStorage<T> {
+impl<T: Copy> SliceAccess<T> for GPUDenseVecStorage<T> {
     type Element = T;
 
     /// Returns a slice of all the components in this storage.
@@ -48,7 +48,7 @@ impl<T: Copy> SliceAccess<T> for GPUVecStorage<T> {
     }
 }
 
-impl<T: Copy> UnprotectedStorage<T> for GPUVecStorage<T> {
+impl<T: Copy> UnprotectedStorage<T> for GPUDenseVecStorage<T> {
     unsafe fn clean<B>(&mut self, _has: B)
     where
         B: BitSetLike,
@@ -93,4 +93,4 @@ impl<T: Copy> UnprotectedStorage<T> for GPUVecStorage<T> {
     }
 }
 
-unsafe impl<T: Copy> DistinctStorage for GPUVecStorage<T> {}
+unsafe impl<T: Copy> DistinctStorage for GPUDenseVecStorage<T> {}
