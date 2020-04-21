@@ -12,6 +12,7 @@ pub use self::{
     storages::{
         BTreeStorage, DefaultVecStorage, DenseVecStorage, HashMapStorage, NullStorage, VecStorage,
     },
+    gpu::GPUDenseVecStorage,
     track::{ComponentEvent, Tracked},
 };
 
