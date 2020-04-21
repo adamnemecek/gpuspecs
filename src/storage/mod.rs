@@ -41,6 +41,7 @@ mod drain;
 mod entry;
 mod flagged;
 mod generic;
+mod gpu;
 mod restrict;
 mod storages;
 #[cfg(test)]
